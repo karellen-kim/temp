@@ -20,6 +20,10 @@
   a:hover { color: var(--color-accent); }
   ::selection { background: var(--color-accent); color: #fff; }
   :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  [data-focus] { cursor: pointer; transition: background .18s ease, box-shadow .18s ease, border-color .18s ease; }
+  [data-focus]:focus, [data-focus].is-on { outline: none; background: rgba(52,100,224,.07); box-shadow: 0 0 0 10px rgba(52,100,224,.07); border-top-color: var(--color-accent) !important; }
+  .nodefocus { cursor: pointer; transition: stroke .18s ease, fill .18s ease; }
+  .nodefocus:focus, .nodefocus.is-on { outline: none; stroke: var(--color-accent); fill: rgba(52,100,224,.14); }
 </style>
 </helmet>
 
@@ -36,7 +40,6 @@
   <button data-dot="5" aria-label="6" style="width:20px; height:2px; border:0; padding:0; cursor:pointer; background:var(--color-neutral-400);"></button>
   <button data-dot="6" aria-label="7" style="width:20px; height:2px; border:0; padding:0; cursor:pointer; background:var(--color-neutral-400);"></button>
   <button data-dot="7" aria-label="8" style="width:20px; height:2px; border:0; padding:0; cursor:pointer; background:var(--color-neutral-400);"></button>
-  <button data-dot="8" aria-label="9" style="width:20px; height:2px; border:0; padding:0; cursor:pointer; background:var(--color-neutral-400);"></button>
 </nav>
 
 <section data-slide data-screen-label="01 Introduction" style="scroll-snap-align:start; min-height:100dvh; display:flex; flex-direction:column; padding:clamp(20px,2.6vw,44px) clamp(24px,3.4vw,64px) clamp(14px,1.6vw,24px);">
@@ -46,7 +49,11 @@
     <span style="font:800 clamp(22px,2.8vw,40px)/.85 'Archivo',sans-serif; color:var(--color-text);">01</span>
   </div>
 
-  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:clamp(20px,2.6vw,40px); padding:clamp(20px,3vw,44px) 0;">
+  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:clamp(18px,2.4vw,32px); padding:clamp(16px,2.2vw,32px) 0; min-height:0;">
+    <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease;">
+      <p style="margin:0; font:700 clamp(.75rem,.95vw,.85rem)/1 'Archivo','Noto Sans KR',sans-serif; letter-spacing:.1em; color:var(--color-accent);">카카오뱅크 서버 개발자 — 뱅킹서버개발2팀</p>
+    </div>
+
     <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,3fr); gap:clamp(20px,3vw,48px); border-top:2px solid var(--color-text); padding-top:clamp(14px,1.8vw,26px);">
       <div>
         <p style="margin:0; font:900 clamp(1.5rem,2.8vw,2.2rem)/1.1 'Archivo','Noto Sans KR',sans-serif; letter-spacing:-.02em;">김은미</p>
@@ -54,13 +61,14 @@
         <p style="margin:2px 0 0; font-size:.9rem; line-height:1.5; color:var(--color-accent-700);">ML Search Platform Team Lead</p>
       </div>
       <div style="border-left:2px solid var(--color-divider); padding-left:clamp(18px,2.4vw,40px);">
-        <p style="margin:0; font-size:clamp(.9rem,1.15vw,1.02rem); line-height:1.75; color:var(--color-neutral-800); text-wrap:pretty;">C++ 개발부터 웹서비스, ML, 검색까지 여러 기술에 도전하고, 레거시를 MSA로 전환하며, 대용량 트래픽과 데이터를 다루는 등 도전적인 과제를 계속 맡아왔습니다. 지금은 토스에서 팀을 이끌며, 여러 서비스가 함께 쓰는 검색 플랫폼을 설계·개발하면서 각 팀의 요구사항을 조율하고, 팀에 AI를 적용해 생산성을 높이는 데 힘쓰고 있습니다.</p>
+        <p style="margin:0; font-size:clamp(.9rem,1.15vw,1.02rem); line-height:1.75; color:var(--color-neutral-800); text-wrap:pretty;">카카오에서 선물하기 모놀리식을 MSA로 전환했고, 다음에서는 6개 도메인 서비스를 0에서 1까지 만들어 운영했습니다. 지금은 토스에서 팀을 이끌며 여러 서비스가 함께 쓰는 검색 플랫폼을 수억 건 규모로 설계·운영하고, 팀의 개발 프로세스에 AI를 통합하는 일을 하고 있습니다.</p>
       </div>
     </div>
+
   </div>
 
   <div style="display:flex; justify-content:space-between; border-top:2px solid var(--color-text); padding-top:8px; font:600 11px/1 'Archivo',sans-serif; letter-spacing:.1em; color:var(--color-neutral-600);">
-    <span>KIM EUNMI</span><span>01 / 09</span>
+    <span>KIM EUNMI</span><span>01 / 08</span>
   </div>
 </section>
 
@@ -71,141 +79,139 @@
     <span style="font:800 clamp(22px,2.8vw,40px)/.85 'Archivo',sans-serif; color:var(--color-text);">02</span>
   </div>
 
-  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:clamp(20px,3vw,44px) 0;">
-    <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:clamp(20px,3vw,48px);">
-      <div style="border-top:2px solid var(--color-text); padding-top:clamp(12px,1.6vw,22px);">
-        <div style="display:flex; align-items:baseline; gap:14px;">
-          <span style="font:800 clamp(28px,3.6vw,52px)/.85 'Archivo',sans-serif; color:var(--color-accent);">01</span>
-          <div>
-            <p style="margin:0; font-weight:800; font-size:clamp(1.05rem,1.7vw,1.45rem); line-height:1.2; letter-spacing:-.01em;">토스(비바리퍼블리카)</p>
-            <p style="margin:4px 0 0; font:600 clamp(.72rem,.95vw,.85rem)/1 'Archivo',sans-serif; letter-spacing:.08em; color:var(--color-neutral-600);">2021 — 현재</p>
-          </div>
-        </div>
-        <ul style="margin:clamp(14px,1.8vw,22px) 0 0; padding:0; list-style:none; display:grid; gap:0; font-size:clamp(.85rem,1.1vw,.95rem); line-height:1.55; color:var(--color-neutral-800);">
-          <li style="border-top:1px solid var(--color-divider); padding:9px 0;">수억 건 규모, 빠르게 연동하고 무중단 배포 가능한 검색 플랫폼</li>
-          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:9px 0;">p99 10ms Feature Store·ML 플랫폼</li>
-        </ul>
-      </div>
-      <div style="border-top:2px solid var(--color-text); padding-top:clamp(12px,1.6vw,22px);">
-        <div style="display:flex; align-items:baseline; gap:14px;">
-          <span style="font:800 clamp(28px,3.6vw,52px)/.85 'Archivo',sans-serif; color:var(--color-accent);">02</span>
-          <div>
-            <p style="margin:0; font-weight:800; font-size:clamp(1.05rem,1.7vw,1.45rem); line-height:1.2; letter-spacing:-.01em;">네이버</p>
-            <p style="margin:4px 0 0; font:600 clamp(.72rem,.95vw,.85rem)/1 'Archivo',sans-serif; letter-spacing:.08em; color:var(--color-neutral-600);">2020.03 — 2021</p>
-          </div>
-        </div>
-        <ul style="margin:clamp(14px,1.8vw,22px) 0 0; padding:0; list-style:none; display:grid; gap:0; font-size:clamp(.85rem,1.1vw,.95rem); line-height:1.55; color:var(--color-neutral-800);">
-          <li style="border-top:1px solid var(--color-divider); padding:9px 0;">LINE 메신저의 오픈챗 챗봇과 네이버 챗봇 개발</li>
-          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:9px 0;">비동기 처리 전환으로 성능 3배 향상</li>
-        </ul>
-      </div>
+  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:clamp(12px,1.6vw,22px) 0; min-height:0;">
+    <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease;">
+      <svg viewBox="0 0 1360 328" role="img" aria-labelledby="career-timeline-title career-timeline-desc" style="width:100%; height:auto; max-height:min(62vh,540px); display:block; font-family:'Archivo','Noto Sans KR',sans-serif;">
+        <title id="career-timeline-title">경력 타임라인 2007-2026</title>
+        <desc id="career-timeline-desc">한글과컴퓨터 35개월, 다음 64개월, 카카오 57개월, 네이버 21개월, 토스 57개월의 재직 기간을 실제 길이 비율로 표시한 타임라인. 회사마다 색을 달리하고 0에서 1 구축과 장애 대응, 모놀리식 MSA 전환, 대용량 트래픽 HTTP/2 비동기 전환, 무중단 검색 플랫폼을 핵심 성과로 표시.</desc>
+
+        <rect x="24" y="176" width="196" height="10" fill="#c4c4c4"/>
+        <rect x="220" y="176" width="360" height="10" fill="#a8bced"/>
+        <rect x="580" y="176" width="320" height="10" fill="#7d9be8"/>
+        <rect x="900" y="176" width="120" height="10" fill="#5578e4"/>
+        <rect x="1020" y="176" width="316" height="10" fill="#3464e0"/>
+        <circle cx="1336" cy="181" r="7" fill="#3464e0"/>
+
+        <line x1="24" y1="186" x2="24" y2="196" stroke="#c4c4c4" stroke-width="1"/>
+        <line x1="220" y1="186" x2="220" y2="196" stroke="#a8bced" stroke-width="1"/>
+        <line x1="580" y1="186" x2="580" y2="196" stroke="#7d9be8" stroke-width="1"/>
+        <line x1="900" y1="186" x2="900" y2="196" stroke="#5578e4" stroke-width="1"/>
+        <line x1="1020" y1="186" x2="1020" y2="196" stroke="#3464e0" stroke-width="1"/>
+
+        <text x="24" y="212" font-size="11" font-weight="600" letter-spacing="0.06em" fill="var(--color-neutral-600)">2007</text>
+        <text x="220" y="212" font-size="11" font-weight="600" letter-spacing="0.06em" fill="var(--color-neutral-600)">2010</text>
+        <text x="580" y="212" font-size="11" font-weight="600" letter-spacing="0.06em" fill="var(--color-neutral-600)">2015</text>
+        <text x="900" y="212" font-size="11" font-weight="600" letter-spacing="0.06em" fill="var(--color-neutral-600)">2020</text>
+        <text x="1336" y="212" font-size="11" font-weight="700" letter-spacing="0.06em" fill="#3464e0" text-anchor="end">현재</text>
+
+        <text x="24" y="96" font-size="15" font-weight="700" fill="var(--color-neutral-600)">한글과컴퓨터</text>
+        <text x="24" y="116" font-size="11" font-weight="600" letter-spacing="0.04em" fill="var(--color-neutral-600)">2007.02 — 2010.01 · 2년 11개월</text>
+        <text x="24" y="156" font-size="13" fill="var(--color-neutral-600)">프린트 드라이버 · DFR 시스템</text>
+
+        <text x="580" y="92" font-size="18" font-weight="800" fill="var(--color-text)">카카오</text>
+        <text x="580" y="112" font-size="11" font-weight="600" letter-spacing="0.04em" fill="var(--color-neutral-600)">2015.06 — 2020.03 · 4년 9개월 · 선물하기</text>
+        <rect x="580" y="128" width="7" height="7" fill="#7d9be8"/>
+        <text x="595" y="136" font-size="15" font-weight="700" fill="var(--color-text)">선물하기 모놀리식 → MSA 전환</text>
+        <text x="595" y="158" font-size="13" fill="var(--color-neutral-600)">카톡 생일 친구·오픈채팅 선물하기 매출 기여</text>
+
+        <text x="1020" y="92" font-size="18" font-weight="800" fill="var(--color-text)">토스(비바리퍼블리카)</text>
+        <text x="1020" y="112" font-size="11" font-weight="600" letter-spacing="0.04em" fill="var(--color-neutral-600)">2021.12 — 현재 · 4년 9개월</text>
+        <text x="1020" y="130" font-size="11" font-weight="600" letter-spacing="0.04em" fill="var(--color-neutral-600)">ML Search Platform Team Lead</text>
+        <rect x="1020" y="146" width="7" height="7" fill="#3464e0"/>
+        <text x="1035" y="154" font-size="14" font-weight="700" fill="var(--color-text)">수억 건 무중단 검색 플랫폼</text>
+        <text x="1035" y="172" font-size="12" fill="var(--color-neutral-600)">p99 10ms Feature Store·ML 플랫폼</text>
+
+        <text x="220" y="244" font-size="18" font-weight="800" fill="var(--color-text)">다음</text>
+        <text x="220" y="264" font-size="11" font-weight="600" letter-spacing="0.04em" fill="var(--color-neutral-600)">2010.02 — 2015.06 · 5년 4개월</text>
+        <rect x="220" y="280" width="7" height="7" fill="#a8bced"/>
+        <text x="235" y="288" font-size="15" font-weight="700" fill="var(--color-text)">6개 도메인 서비스 0→1 구축·운영·장애 대응</text>
+        <text x="235" y="310" font-size="13" fill="var(--color-neutral-600)">사전 레거시 리팩토링</text>
+
+        <text x="900" y="244" font-size="18" font-weight="800" fill="var(--color-text)">네이버</text>
+        <text x="900" y="264" font-size="11" font-weight="600" letter-spacing="0.04em" fill="var(--color-neutral-600)">2020.03 — 2021.12 · 1년 9개월</text>
+        <rect x="900" y="280" width="7" height="7" fill="#5578e4"/>
+        <text x="915" y="288" font-size="14" font-weight="700" fill="var(--color-text)">대용량 트래픽 대비 HTTP/2 비동기 전환 → 성능 3배</text>
+        <text x="915" y="310" font-size="13" fill="var(--color-neutral-600)">LINE 오픈챗·네이버 챗봇</text>
+      
+        <rect class="nodefocus" tabindex="0" x="16" y="68" width="290" height="104" rx="6" fill="transparent" stroke="transparent" stroke-width="2.5"/>
+        <rect class="nodefocus" tabindex="0" x="572" y="64" width="430" height="108" rx="6" fill="transparent" stroke="transparent" stroke-width="2.5"/>
+        <rect class="nodefocus" tabindex="0" x="1012" y="64" width="332" height="120" rx="6" fill="transparent" stroke="transparent" stroke-width="2.5"/>
+        <rect class="nodefocus" tabindex="0" x="212" y="222" width="600" height="100" rx="6" fill="transparent" stroke="transparent" stroke-width="2.5"/>
+        <rect class="nodefocus" tabindex="0" x="892" y="222" width="452" height="100" rx="6" fill="transparent" stroke="transparent" stroke-width="2.5"/>
+      </svg>
     </div>
   </div>
 
   <div style="display:flex; justify-content:space-between; border-top:2px solid var(--color-text); padding-top:8px; font:600 11px/1 'Archivo',sans-serif; letter-spacing:.1em; color:var(--color-neutral-600);">
-    <span>EXPERIENCE</span><span>02 / 09</span>
+    <span>EXPERIENCE</span><span>02 / 08</span>
   </div>
 </section>
 
-<section data-slide data-screen-label="03 Experience" style="scroll-snap-align:start; min-height:100dvh; display:flex; flex-direction:column; padding:clamp(20px,2.6vw,44px) clamp(24px,3.4vw,64px) clamp(14px,1.6vw,24px);">
+<section data-slide data-screen-label="03 Contribution" style="scroll-snap-align:start; min-height:100dvh; display:flex; flex-direction:column; padding:clamp(20px,2.6vw,44px) clamp(24px,3.4vw,64px) clamp(14px,1.6vw,24px);">
   <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:flex; align-items:flex-end; gap:clamp(12px,2vw,24px); border-bottom:2px solid var(--color-text); padding-bottom:8px;">
-    <span style="font:700 clamp(11px,1vw,13px)/1 'Archivo',sans-serif; letter-spacing:.16em; text-transform:uppercase; color:var(--color-accent);">Experience</span>
+    <span style="font:700 clamp(11px,1vw,13px)/1 'Archivo',sans-serif; letter-spacing:.16em; text-transform:uppercase; color:var(--color-accent);">Contribution</span>
     <span style="flex:1;"></span>
     <span style="font:800 clamp(22px,2.8vw,40px)/.85 'Archivo',sans-serif; color:var(--color-text);">03</span>
   </div>
 
-  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:clamp(20px,3vw,44px) 0;">
-    <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:clamp(20px,2.6vw,40px);">
-      <div style="border-top:2px solid var(--color-text); padding-top:clamp(12px,1.6vw,22px);">
-        <div style="display:flex; align-items:baseline; gap:14px;">
-          <span style="font:800 clamp(26px,3.2vw,46px)/.85 'Archivo',sans-serif; color:var(--color-accent);">01</span>
-          <div>
-            <p style="margin:0; font-weight:800; font-size:clamp(1.05rem,1.6vw,1.35rem); line-height:1.2; letter-spacing:-.01em;">카카오</p>
-            <p style="margin:4px 0 0; font:600 clamp(.72rem,.95vw,.85rem)/1 'Archivo',sans-serif; letter-spacing:.08em; color:var(--color-neutral-600);">2015.06 — 2020.03</p>
-          </div>
-        </div>
-        <ul style="margin:clamp(14px,1.8vw,22px) 0 0; padding:0; list-style:none; font-size:clamp(.85rem,1.1vw,.95rem); line-height:1.55; color:var(--color-neutral-800);">
-          <li style="border-top:1px solid var(--color-divider); padding:9px 0;">선물하기 모놀리식 → MSA 전환</li>
-          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:9px 0;">카톡 생일 친구·오픈채팅 선물하기 개발로 매출 기여</li>
+  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:clamp(14px,2vw,26px); padding:clamp(12px,1.6vw,22px) 0; min-height:0;">
+    <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease;">
+      <h2 style="margin:0; font:900 clamp(1.2rem,2.2vw,1.75rem)/1.25 'Archivo','Noto Sans KR',sans-serif; letter-spacing:-.02em;">기여할 수 있는 일</h2>
+    </div>
+
+    <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); grid-template-rows:auto auto 1fr; gap:clamp(18px,2.4vw,36px); min-height:0;">
+      <div tabindex="0" data-focus style="border-top:2px solid var(--color-text); padding-top:clamp(10px,1.4vw,18px); min-width:0; display:grid; grid-row:span 3; grid-template-rows:subgrid;">
+        <p style="margin:0; font:700 .68rem/1.3 'Archivo','Noto Sans KR',sans-serif; letter-spacing:.06em; color:var(--color-accent);">모놀리스 점진적 이관</p>
+        <p style="margin:8px 0 0; font-weight:800; font-size:clamp(.95rem,1.3vw,1.1rem);">레거시 개선 · MSA 전환</p>
+        <ul style="margin:10px 0 0; padding:0; list-style:none; font-size:clamp(.8rem,1.02vw,.9rem); line-height:1.5; color:var(--color-neutral-800);">
+          <li style="border-top:1px solid var(--color-divider); padding:7px 0;">카카오 선물하기 모놀리식 → MSA 전환</li>
+          <li style="border-top:1px solid var(--color-divider); padding:7px 0;">토스 내 여러 도메인의 레거시 검색을 공용 플랫폼으로 이전</li>
+          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:7px 0;">네이버 챗봇 · 선물하기 프론트 · 다음 사전 레거시 개선</li>
         </ul>
       </div>
-      <div style="border-top:2px solid var(--color-text); padding-top:clamp(12px,1.6vw,22px);">
-        <div style="display:flex; align-items:baseline; gap:14px;">
-          <span style="font:800 clamp(26px,3.2vw,46px)/.85 'Archivo',sans-serif; color:var(--color-accent);">02</span>
-          <div>
-            <p style="margin:0; font-weight:800; font-size:clamp(1.05rem,1.6vw,1.35rem); line-height:1.2; letter-spacing:-.01em;">다음</p>
-            <p style="margin:4px 0 0; font:600 clamp(.72rem,.95vw,.85rem)/1 'Archivo',sans-serif; letter-spacing:.08em; color:var(--color-neutral-600);">2010.02 — 2015.06</p>
-          </div>
-        </div>
-        <ul style="margin:clamp(14px,1.8vw,22px) 0 0; padding:0; list-style:none; font-size:clamp(.85rem,1.1vw,.95rem); line-height:1.55; color:var(--color-neutral-800);">
-          <li style="border-top:1px solid var(--color-divider); padding:9px 0;">지식·사전·대입 등 6개 도메인 서비스 0→1 구축 및 운영</li>
-          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:9px 0;">사전 레거시 리팩토링</li>
+      <div tabindex="0" data-focus style="border-top:2px solid var(--color-text); padding-top:clamp(10px,1.4vw,18px); min-width:0; display:grid; grid-row:span 3; grid-template-rows:subgrid;">
+        <p style="margin:0; font:700 .68rem/1.3 'Archivo','Noto Sans KR',sans-serif; letter-spacing:.06em; color:var(--color-accent);">대규모 트래픽 0 → 1</p>
+        <p style="margin:8px 0 0; font-weight:800; font-size:clamp(.95rem,1.3vw,1.1rem);">대용량 트래픽 설계 · 운영</p>
+        <ul style="margin:10px 0 0; padding:0; list-style:none; font-size:clamp(.8rem,1.02vw,.9rem); line-height:1.5; color:var(--color-neutral-800);">
+          <li style="border-top:1px solid var(--color-divider); padding:7px 0;">수억 건 규모, 무중단 배포 가능한 검색 플랫폼</li>
+          <li style="border-top:1px solid var(--color-divider); padding:7px 0;">p99 10ms Feature Store · ML 플랫폼</li>
+          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:7px 0;">다음 6개 도메인 서비스 0→1 구축·운영·장애 대응</li>
         </ul>
       </div>
-      <div style="border-top:2px solid var(--color-text); padding-top:clamp(12px,1.6vw,22px);">
-        <div style="display:flex; align-items:baseline; gap:14px;">
-          <span style="font:800 clamp(26px,3.2vw,46px)/.85 'Archivo',sans-serif; color:var(--color-accent);">03</span>
-          <div>
-            <p style="margin:0; font-weight:800; font-size:clamp(1.05rem,1.6vw,1.35rem); line-height:1.2; letter-spacing:-.01em;">한글과컴퓨터</p>
-            <p style="margin:4px 0 0; font:600 clamp(.72rem,.95vw,.85rem)/1 'Archivo',sans-serif; letter-spacing:.08em; color:var(--color-neutral-600);">2007.02 — 2010.01</p>
-          </div>
-        </div>
-        <ul style="margin:clamp(14px,1.8vw,22px) 0 0; padding:0; list-style:none; font-size:clamp(.85rem,1.1vw,.95rem); line-height:1.55; color:var(--color-neutral-800);">
-          <li style="border-top:1px solid var(--color-divider); padding:9px 0;">한글 문서 → 프린트 드라이버</li>
-          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:9px 0;">디지털 기록물 관리 DFR 시스템</li>
+      <div tabindex="0" data-focus style="border-top:2px solid var(--color-text); padding-top:clamp(10px,1.4vw,18px); min-width:0; display:grid; grid-row:span 3; grid-template-rows:subgrid;">
+        <p style="margin:0; font:700 .68rem/1.3 'Archivo','Noto Sans KR',sans-serif; letter-spacing:.06em; color:var(--color-accent);">AI 개발 프로세스 통합</p>
+        <p style="margin:8px 0 0; font-weight:800; font-size:clamp(.95rem,1.3vw,1.1rem);">AI 생산성 향상 · 결과 검증</p>
+        <ul style="margin:10px 0 0; padding:0; list-style:none; font-size:clamp(.8rem,1.02vw,.9rem); line-height:1.5; color:var(--color-neutral-800);">
+          <li style="border-top:1px solid var(--color-divider); padding:7px 0;">팀 Claude 사용 표준화</li>
+          <li style="border-top:1px solid var(--color-divider); padding:7px 0;">검색 커버리지·정확도 보강으로 더 정확한 AI</li>
+          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:7px 0;">작업할수록 문서와 기준이 쌓이는 구조</li>
         </ul>
       </div>
+    </div>
+
+    <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; border-top:1px solid var(--color-divider); padding-top:clamp(10px,1.4vw,16px); display:flex; flex-wrap:wrap; align-items:baseline; gap:8px clamp(16px,2.2vw,32px);">
+      <span style="font:700 .68rem/1 'Archivo','Noto Sans KR',sans-serif; letter-spacing:.1em; color:var(--color-accent); white-space:nowrap;">이미 익숙한 환경</span>
+      <span style="font-size:clamp(.8rem,1.02vw,.9rem); color:var(--color-neutral-800);">망분리 환경·규제가 동일해 개발/업무 환경이 비슷함</span>
+      <span style="font-size:clamp(.8rem,1.02vw,.9rem); color:var(--color-neutral-800);">금융 정보를 데이터로 다루고 있어서 익숙함</span>
     </div>
   </div>
 
   <div style="display:flex; justify-content:space-between; border-top:2px solid var(--color-text); padding-top:8px; font:600 11px/1 'Archivo',sans-serif; letter-spacing:.1em; color:var(--color-neutral-600);">
-    <span>EXPERIENCE</span><span>03 / 09</span>
+    <span>CONTRIBUTION</span><span>03 / 08</span>
   </div>
 </section>
 
-<section data-slide data-screen-label="04 Contribution" style="scroll-snap-align:start; min-height:100dvh; display:flex; flex-direction:column; padding:clamp(20px,2.6vw,44px) clamp(24px,3.4vw,64px) clamp(14px,1.6vw,24px);">
+
+<section data-slide data-screen-label="04 Strength" style="scroll-snap-align:start; min-height:100dvh; display:flex; flex-direction:column; padding:clamp(20px,2.6vw,44px) clamp(24px,3.4vw,64px) clamp(14px,1.6vw,24px);">
   <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:flex; align-items:flex-end; gap:clamp(12px,2vw,24px); border-bottom:2px solid var(--color-text); padding-bottom:8px;">
-    <span style="font:700 clamp(11px,1vw,13px)/1 'Archivo',sans-serif; letter-spacing:.16em; text-transform:uppercase; color:var(--color-accent);">Contribution</span>
+    <span style="font:700 clamp(11px,1vw,13px)/1 'Archivo',sans-serif; letter-spacing:.16em; text-transform:uppercase; color:var(--color-accent);">Strength</span>
     <span style="flex:1;"></span>
     <span style="font:800 clamp(22px,2.8vw,40px)/.85 'Archivo',sans-serif; color:var(--color-text);">04</span>
   </div>
 
-  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:clamp(18px,2.4vw,36px) 0; min-height:0;">
-    <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:clamp(20px,2.6vw,40px);">
-      <div style="border-top:2px solid var(--color-text); padding-top:clamp(12px,1.6vw,20px); min-width:0;">
-        <p style="margin:0; font-weight:800; font-size:clamp(.95rem,1.3vw,1.1rem);">레거시 개선 · MSA 개선</p>
-      </div>
-      <div style="border-top:2px solid var(--color-text); padding-top:clamp(12px,1.6vw,20px); min-width:0;">
-        <p style="margin:0; font-weight:800; font-size:clamp(.95rem,1.3vw,1.1rem);">대용량 대규모 트래픽에 대비한 설계 및 구현</p>
-      </div>
-      <div style="border-top:2px solid var(--color-text); padding-top:clamp(12px,1.6vw,20px); min-width:0;">
-        <p style="margin:0; font-weight:800; font-size:clamp(.95rem,1.3vw,1.1rem);">AI 적용하여 생산성 향상</p>
-      </div>
-      <div style="border-top:2px solid var(--color-text); padding-top:clamp(12px,1.6vw,20px); min-width:0;">
-        <p style="margin:0; font-weight:800; font-size:clamp(.95rem,1.3vw,1.1rem);">카카오뱅크와 맞닿아 있는 지점</p>
-        <ul style="margin:12px 0 0; padding:0; list-style:none; font-size:clamp(.82rem,1.05vw,.92rem); line-height:1.5; color:var(--color-neutral-800);">
-          <li style="border-top:1px solid var(--color-divider); padding:8px 0;">망분리 환경·규제가 동일해 개발/업무 환경이 비슷함</li>
-          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:8px 0;">금융 정보를 데이터로 다루고 있어서 익숙함</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div style="display:flex; justify-content:space-between; border-top:2px solid var(--color-text); padding-top:8px; font:600 11px/1 'Archivo',sans-serif; letter-spacing:.1em; color:var(--color-neutral-600);">
-    <span>CONTRIBUTION</span><span>04 / 09</span>
-  </div>
-</section>
-
-<section data-slide data-screen-label="05 Strength" style="scroll-snap-align:start; min-height:100dvh; display:flex; flex-direction:column; padding:clamp(20px,2.6vw,44px) clamp(24px,3.4vw,64px) clamp(14px,1.6vw,24px);">
-  <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:flex; align-items:flex-end; gap:clamp(12px,2vw,24px); border-bottom:2px solid var(--color-text); padding-bottom:8px;">
-    <span style="font:700 clamp(11px,1vw,13px)/1 'Archivo',sans-serif; letter-spacing:.16em; text-transform:uppercase; color:var(--color-accent);">Strength</span>
-    <span style="flex:1;"></span>
-    <span style="font:800 clamp(22px,2.8vw,40px)/.85 'Archivo',sans-serif; color:var(--color-text);">05</span>
-  </div>
-
   <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:clamp(10px,1.4vw,20px) 0; min-height:0;">
     <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); grid-template-rows:auto auto auto 1fr; gap:clamp(20px,2.6vw,40px); min-height:0;">
-      <div style="border-top:2px solid var(--color-text); padding-top:clamp(12px,1.6vw,20px); display:grid; grid-row:span 4; grid-template-rows:subgrid;">
+      <div tabindex="0" data-focus style="border-top:2px solid var(--color-text); padding-top:clamp(12px,1.6vw,20px); display:grid; grid-row:span 4; grid-template-rows:subgrid;">
         <div style="display:flex; align-items:baseline; gap:12px;">
           <span style="font:800 clamp(24px,2.8vw,38px)/.85 'Archivo',sans-serif; color:var(--color-accent);">01</span>
           <p style="margin:0; font-weight:800; font-size:clamp(1.05rem,1.6vw,1.35rem); letter-spacing:-.01em;">주도성</p>
@@ -217,7 +223,7 @@
           <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:8px 0;">다음 사전 카메라 인식 앱 구현 / 선물하기 프론트 개선</li>
         </ul>
       </div>
-      <div style="border-top:2px solid var(--color-text); padding-top:clamp(12px,1.6vw,20px); min-width:0; display:grid; grid-row:span 4; grid-template-rows:subgrid;">
+      <div tabindex="0" data-focus style="border-top:2px solid var(--color-text); padding-top:clamp(12px,1.6vw,20px); min-width:0; display:grid; grid-row:span 4; grid-template-rows:subgrid;">
         <div style="display:flex; align-items:baseline; gap:12px;">
           <span style="font:800 clamp(24px,2.8vw,38px)/.85 'Archivo',sans-serif; color:var(--color-accent);">02</span>
           <p style="margin:0; font-weight:800; font-size:clamp(1.05rem,1.6vw,1.35rem); letter-spacing:-.01em;">자동화 · 플랫폼화</p>
@@ -233,7 +239,7 @@
           <a href="assets/bot.png" target="_blank" rel="noopener" class="grayscale" style="display:block; border:1px solid var(--color-neutral-300); line-height:0;"><img src="assets/bot.png" alt="검색플랫폼 봇" style="width:100%; height:min(22vh,220px); object-fit:cover; object-position:left top; display:block;"></a>
         </div>
       </div>
-      <div style="border-top:2px solid var(--color-text); padding-top:clamp(12px,1.6vw,20px); min-width:0; display:grid; grid-row:span 4; grid-template-rows:subgrid;">
+      <div tabindex="0" data-focus style="border-top:2px solid var(--color-text); padding-top:clamp(12px,1.6vw,20px); min-width:0; display:grid; grid-row:span 4; grid-template-rows:subgrid;">
         <div style="display:flex; align-items:baseline; gap:12px;">
           <span style="font:800 clamp(24px,2.8vw,38px)/.85 'Archivo',sans-serif; color:var(--color-accent);">03</span>
           <p style="margin:0; font-weight:800; font-size:clamp(1.05rem,1.6vw,1.35rem); letter-spacing:-.01em;">테스트/배포 환경 구축</p>
@@ -250,151 +256,167 @@
   </div>
 
   <div style="display:flex; justify-content:space-between; border-top:2px solid var(--color-text); padding-top:8px; font:600 11px/1 'Archivo',sans-serif; letter-spacing:.1em; color:var(--color-neutral-600);">
-    <span>STRENGTH</span><span>05 / 09</span>
+    <span>STRENGTH</span><span>04 / 08</span>
   </div>
 </section>
 
-<section data-slide data-screen-label="06 Strength" style="scroll-snap-align:start; min-height:100dvh; display:flex; flex-direction:column; padding:clamp(20px,2.6vw,44px) clamp(24px,3.4vw,64px) clamp(14px,1.6vw,24px);">
+<section data-slide data-screen-label="05 Strength" style="scroll-snap-align:start; min-height:100dvh; display:flex; flex-direction:column; padding:clamp(20px,2.6vw,44px) clamp(24px,3.4vw,64px) clamp(14px,1.6vw,24px);">
   <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:flex; align-items:flex-end; gap:clamp(12px,2vw,24px); border-bottom:2px solid var(--color-text); padding-bottom:8px;">
     <span style="font:700 clamp(11px,1vw,13px)/1 'Archivo',sans-serif; letter-spacing:.16em; text-transform:uppercase; color:var(--color-accent);">Strength</span>
+    <span style="flex:1;"></span>
+    <span style="font:800 clamp(22px,2.8vw,40px)/.85 'Archivo',sans-serif; color:var(--color-text);">05</span>
+  </div>
+
+  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:clamp(14px,2vw,26px); padding:clamp(10px,1.4vw,20px) 0; min-height:0;">
+    <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:grid; grid-template-columns:minmax(0,0.7fr) minmax(0,2.3fr); gap:clamp(16px,2.4vw,40px); align-items:end;">
+      <div style="display:flex; align-items:baseline; gap:12px;">
+        <span style="font:800 clamp(24px,2.8vw,38px)/.85 'Archivo',sans-serif; color:var(--color-accent);">04</span>
+        <h2 style="margin:0; font:900 clamp(1.2rem,2.2vw,1.75rem)/1.25 'Archivo','Noto Sans KR',sans-serif; letter-spacing:-.02em;">문제 해결에 집중</h2>
+      </div>
+      <p style="margin:0; font-size:clamp(.88rem,1.15vw,1rem); line-height:1.6; color:var(--color-neutral-800); border-left:2px solid var(--color-accent); padding-left:clamp(14px,1.8vw,24px);">제한된 환경에서도 되는 방법을 먼저 찾고, 리스크를 줄이면서 되돌릴 수 있는 쪽을 고릅니다.</p>
+    </div>
+
+    <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); grid-template-rows:auto auto 1fr; gap:clamp(16px,2.2vw,32px); min-height:0;">
+      <div tabindex="0" data-focus style="border-top:2px solid var(--color-text); padding-top:clamp(10px,1.4vw,18px); min-width:0; display:grid; grid-row:span 3; grid-template-rows:subgrid;">
+        <p style="margin:0; font-weight:800; font-size:clamp(.95rem,1.3vw,1.1rem);">할 수 있는 것과 없는 것을 쪼개서 해결</p>
+        <ul style="margin:10px 0 0; padding:0; list-style:none; font-size:clamp(.8rem,1.02vw,.9rem); line-height:1.5; color:var(--color-neutral-800);">
+          <li style="border-top:1px solid var(--color-divider); padding:7px 0;">ES 매핑 — 테이블·Kafka로 추론, 나머지는 확인받아 시간 단축</li>
+          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:7px 0;">검색 설정 export/import로 연동</li>
+        </ul>
+        <a href="assets/alias.png" target="_blank" rel="noopener" class="grayscale" style="display:block; margin-top:10px; border:1px solid var(--color-neutral-300); line-height:0;"><img src="assets/alias.png" alt="ES 매핑 자동 추론 UI" style="width:100%; max-height:min(18vh,160px); object-fit:cover; object-position:left top; display:block;"></a>
+      </div>
+      <div tabindex="0" data-focus style="border-top:2px solid var(--color-text); padding-top:clamp(10px,1.4vw,18px); min-width:0; display:grid; grid-row:span 3; grid-template-rows:subgrid;">
+        <p style="margin:0; font-weight:800; font-size:clamp(.95rem,1.3vw,1.1rem);">컨벤션과 가이드로 해결</p>
+        <ul style="margin:10px 0 0; padding:0; list-style:none; font-size:clamp(.8rem,1.02vw,.9rem); line-height:1.5; color:var(--color-neutral-800);">
+          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:7px 0;">Mustache 파라미터 존재 판별</li>
+        </ul>
+        <pre style="margin:10px 0 0; background:var(--color-neutral-200); border:1px solid var(--color-neutral-300); padding:10px 12px; font-family:ui-monospace,'SFMono-Regular',Menlo,monospace; font-size:.66rem; line-height:1.6; color:var(--color-neutral-800); overflow-x:auto;"><code>{{ mustacheSample }}</code></pre>
+      </div>
+      <div tabindex="0" data-focus style="border-top:2px solid var(--color-text); padding-top:clamp(10px,1.4vw,18px); min-width:0; display:grid; grid-row:span 3; grid-template-rows:subgrid;">
+        <p style="margin:0; font-weight:800; font-size:clamp(.95rem,1.3vw,1.1rem);">되돌릴 수 있는 설계</p>
+        <ul style="margin:10px 0 0; padding:0; list-style:none; font-size:clamp(.8rem,1.02vw,.9rem); line-height:1.5; color:var(--color-neutral-800);">
+          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:7px 0;">추상화 덕분에 ClickHouse → StarRocks를 3개월 뒤 쉽게 이전</li>
+        </ul>
+        <div style="margin-top:10px; border:1px solid var(--color-neutral-300); padding:12px 14px; display:grid; gap:8px; justify-items:start;">
+          <div style="padding:5px 10px; background:var(--color-text); color:var(--color-bg); font:700 .68rem/1 'Archivo','Noto Sans KR',sans-serif; letter-spacing:.06em;">추상화</div>
+          <div style="width:2px; height:14px; background:var(--color-text); margin-left:20px;"></div>
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:.7rem;">
+            <span style="padding:5px 10px; border:2px solid var(--color-neutral-400); color:var(--color-neutral-600); text-decoration:line-through;">ClickHouse</span>
+            <span style="font-weight:800; color:var(--color-accent);">→</span>
+            <span style="padding:5px 10px; background:var(--color-accent); color:#fff; font-weight:800;">StarRocks</span>
+          </div>
+          <div style="font:600 .66rem/1 'Archivo',sans-serif; letter-spacing:.08em; color:var(--color-neutral-600);">3개월 후 전환</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex; justify-content:space-between; border-top:2px solid var(--color-text); padding-top:8px; font:600 11px/1 'Archivo',sans-serif; letter-spacing:.1em; color:var(--color-neutral-600);">
+    <span>STRENGTH</span><span>05 / 08</span>
+  </div>
+</section>
+
+<section data-slide data-screen-label="06 Leadership" style="scroll-snap-align:start; min-height:100dvh; display:flex; flex-direction:column; padding:clamp(20px,2.6vw,44px) clamp(24px,3.4vw,64px) clamp(14px,1.6vw,24px);">
+  <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:flex; align-items:flex-end; gap:clamp(12px,2vw,24px); border-bottom:2px solid var(--color-text); padding-bottom:8px;">
+    <span style="font:700 clamp(11px,1vw,13px)/1 'Archivo',sans-serif; letter-spacing:.16em; text-transform:uppercase; color:var(--color-accent);">Leadership</span>
     <span style="flex:1;"></span>
     <span style="font:800 clamp(22px,2.8vw,40px)/.85 'Archivo',sans-serif; color:var(--color-text);">06</span>
   </div>
 
-  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:clamp(18px,2.4vw,32px); padding:clamp(10px,1.4vw,20px) 0; min-height:0;">
-    <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease;">
-      <div style="display:flex; align-items:baseline; gap:12px;">
-        <span style="font:800 clamp(24px,2.8vw,38px)/.85 'Archivo',sans-serif; color:var(--color-accent);">04</span>
-        <p style="margin:0; font-weight:800; font-size:clamp(1.15rem,1.9vw,1.6rem); letter-spacing:-.01em;">문제 해결에 집중</p>
-      </div>
-      <p style="margin:12px 0 0; font-size:clamp(.9rem,1.2vw,1.05rem); line-height:1.6; color:var(--color-neutral-800); text-wrap:pretty;">제한된 환경에서도 '되는 방법'을 먼저 찾고, 리스크를 줄이면서 되돌릴 수 있는 방법을 우선해요</p>
+  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:clamp(12px,1.8vw,22px); padding:clamp(10px,1.4vw,18px) 0; min-height:0;">
+    <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:grid; grid-template-columns:minmax(0,0.7fr) minmax(0,2.3fr); gap:clamp(16px,2.4vw,40px); align-items:end;">
+      <h2 style="margin:0; font:900 clamp(1.15rem,2.1vw,1.65rem)/1.25 'Archivo','Noto Sans KR',sans-serif; letter-spacing:-.02em; text-wrap:pretty;">팀 리딩 · 커뮤니케이션</h2>
+      <p style="margin:0; font-size:clamp(.86rem,1.1vw,.98rem); line-height:1.6; color:var(--color-neutral-800); border-left:2px solid var(--color-accent); padding-left:clamp(14px,1.8vw,24px);">수치와 시각 자료로 근거를 만들어 설득하고, 개인의 노력에 기대는 대신 시스템으로 남기고 있어요</p>
     </div>
 
-    <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); grid-template-rows:auto auto auto 1fr; gap:clamp(20px,2.6vw,40px); min-height:0;">
-      <div style="border-top:2px solid var(--color-text); padding-top:clamp(12px,1.6vw,20px); min-width:0; display:grid; grid-row:span 4; grid-template-rows:subgrid;">
-        <p style="margin:0; font-weight:800; font-size:clamp(.95rem,1.3vw,1.1rem);">자동화 경계 나누기</p>
-        <ul style="margin:12px 0 0; padding:0; list-style:none; font-size:clamp(.82rem,1.05vw,.92rem); line-height:1.5; color:var(--color-neutral-800);">
-          <li style="border-top:1px solid var(--color-divider); padding:8px 0;">ES 매핑 — 테이블·Kafka로 추론, 나머지는 확인받아 시간 단축</li>
-          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:8px 0;">검색 설정 export/import로 연동</li>
+    <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); grid-template-rows:auto auto 1fr; gap:clamp(14px,2vw,32px); min-height:0;">
+
+      <div tabindex="0" data-focus style="border-top:2px solid var(--color-text); padding-top:clamp(10px,1.4vw,16px); min-width:0; display:grid; grid-row:span 3; grid-template-rows:subgrid;">
+        <p style="margin:0; font-weight:800; font-size:clamp(.92rem,1.25vw,1.05rem);">조직 간 조율</p>
+        <ul style="margin:9px 0 0; padding:0; list-style:none; font-size:clamp(.76rem,.98vw,.86rem); line-height:1.5; color:var(--color-neutral-800);">
+          <li style="border-top:1px solid var(--color-divider); padding:6px 0;"><b>우선순위</b> 필요성과 임팩트가 크고 간단한 곳부터</li>
+          <li style="border-top:1px solid var(--color-divider); padding:6px 0;"><b>설득</b> 이전하면 그 팀이 얻는 것을 구체적으로 제시</li>
+          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:6px 0;"><b>반대</b> 장점 대신 리스크로 설득</li>
         </ul>
-        <a href="assets/alias.png" target="_blank" rel="noopener" class="grayscale" style="display:block; margin-top:12px; border:1px solid var(--color-neutral-300); line-height:0;"><img src="assets/alias.png" alt="ES 매핑 자동 추론 UI" style="width:100%; max-height:min(20vh,180px); object-fit:cover; object-position:left top; display:block;"></a>
+        <a href="assets/notice.png" target="_blank" rel="noopener" class="grayscale" style="display:block; margin-top:10px; border:1px solid var(--color-neutral-300); line-height:0;"><img src="assets/notice.png" alt="Search Portal 오픈 사내 공지" style="width:100%; height:min(10vh,86px); object-fit:cover; object-position:left top; display:block;"></a>
       </div>
-      <div style="border-top:2px solid var(--color-text); padding-top:clamp(12px,1.6vw,20px); min-width:0; display:grid; grid-row:span 4; grid-template-rows:subgrid;">
-        <p style="margin:0; font-weight:800; font-size:clamp(.95rem,1.3vw,1.1rem);">예약어·가이드로 해결</p>
-        <ul style="margin:12px 0 0; padding:0; list-style:none; font-size:clamp(.82rem,1.05vw,.92rem); line-height:1.5; color:var(--color-neutral-800);">
-          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:8px 0;">Mustache 파라미터 존재 판별</li>
+      <div tabindex="0" data-focus style="border-top:2px solid var(--color-text); padding-top:clamp(10px,1.4vw,16px); min-width:0; display:grid; grid-row:span 3; grid-template-rows:subgrid;">
+        <p style="margin:0; font-weight:800; font-size:clamp(.92rem,1.25vw,1.05rem);">수치와 시각화로 설득</p>
+        <ul style="margin:9px 0 0; padding:0; list-style:none; font-size:clamp(.78rem,1vw,.88rem); line-height:1.5; color:var(--color-neutral-800);">
+          <li style="border-top:1px solid var(--color-divider); padding:6px 0;">6개월 데이터 증가량으로 1년 후 latency 예측</li>
+          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:6px 0;">Dependency matrix로 복잡도 시각화</li>
         </ul>
-        <pre style="margin:12px 0 0; background:var(--color-neutral-200); border:1px solid var(--color-neutral-300); padding:12px 14px; font-family:ui-monospace,'SFMono-Regular',Menlo,monospace; font-size:.7rem; line-height:1.7; color:var(--color-neutral-800); overflow-x:auto;"><code>{{ mustacheSample }}</code></pre>
-      </div>
-      <div style="border-top:2px solid var(--color-text); padding-top:clamp(12px,1.6vw,20px); min-width:0; display:grid; grid-row:span 4; grid-template-rows:subgrid;">
-        <p style="margin:0; font-weight:800; font-size:clamp(.95rem,1.3vw,1.1rem);">되돌릴 수 있는 설계</p>
-        <ul style="margin:12px 0 0; padding:0; list-style:none; font-size:clamp(.82rem,1.05vw,.92rem); line-height:1.5; color:var(--color-neutral-800);">
-          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:8px 0;">리스크를 줄이는 설계 — ClickHouse → StarRocks, 추상화 덕분에 3개월 뒤 쉽게 이전</li>
-        </ul>
-        <div style="margin-top:12px; border:1px solid var(--color-neutral-300); padding:16px; display:grid; gap:10px; justify-items:start;">
-          <div style="padding:6px 12px; background:var(--color-text); color:var(--color-bg); font:700 .72rem/1 'Archivo','Noto Sans KR',sans-serif; letter-spacing:.06em;">추상화</div>
-          <div style="width:2px; height:16px; background:var(--color-text); margin-left:22px;"></div>
-          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; font-size:.72rem;">
-            <span style="padding:6px 12px; border:2px solid var(--color-neutral-400); color:var(--color-neutral-600); text-decoration:line-through;">ClickHouse</span>
-            <span style="font-weight:800; color:var(--color-accent);">→</span>
-            <span style="padding:6px 12px; background:var(--color-accent); color:#fff; font-weight:800;">StarRocks</span>
-          </div>
-          <div style="font:600 .68rem/1 'Archivo',sans-serif; letter-spacing:.08em; color:var(--color-neutral-600);">3개월 후 전환</div>
+        <div style="margin-top:10px; display:grid; grid-template-columns:1fr auto 1fr; gap:6px; align-items:center;">
+          <a href="assets/matrix-simple.png" target="_blank" rel="noopener" class="grayscale" style="display:block; border:1px solid var(--color-neutral-300); line-height:0;"><img src="assets/matrix-simple.png" alt="reco-platform 낮은 복잡도" style="width:100%; height:auto; max-height:min(14vh,120px); object-fit:contain; display:block;"></a>
+          <span style="font:800 .64rem/1 'Archivo',sans-serif; letter-spacing:.04em; color:var(--color-neutral-600);">VS</span>
+          <a href="assets/matrix-complex.png" target="_blank" rel="noopener" class="grayscale" style="display:block; border:1px solid var(--color-neutral-300); line-height:0;"><img src="assets/matrix-complex.png" alt="feature-store 높은 복잡도" style="width:100%; height:auto; max-height:min(14vh,120px); object-fit:contain; display:block;"></a>
         </div>
       </div>
+
+      <div tabindex="0" data-focus style="border-top:2px solid var(--color-text); padding-top:clamp(10px,1.4vw,16px); min-width:0; display:grid; grid-row:span 3; grid-template-rows:subgrid;">
+        <p style="margin:0; font-weight:800; font-size:clamp(.92rem,1.25vw,1.05rem);">일정과 우선순위도 수치로 협의</p>
+        <ul style="margin:9px 0 0; padding:0; list-style:none; font-size:clamp(.78rem,1vw,.88rem); line-height:1.5; color:var(--color-neutral-800);">
+          <li style="border-top:1px solid var(--color-divider); padding:6px 0;">진행도·남은 기간을 시각화</li>
+          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:6px 0;">진척률이 낮은 경우 우선순위 낮은 항목부터 제거</li>
+        </ul>
+        <div style="margin-top:10px; border:1px solid var(--color-neutral-300); padding:12px 14px; align-self:start;">
+          <div style="display:flex; justify-content:space-between; font:600 .64rem/1 'Archivo','Noto Sans KR',sans-serif; letter-spacing:.06em; color:var(--color-neutral-600); margin-bottom:8px;">
+            <span>현재 진행 55%</span><span>목표 기준 75%</span>
+          </div>
+          <div style="position:relative; height:10px; background:var(--color-neutral-300);">
+            <div style="position:absolute; left:0; top:0; width:55%; height:100%; background:var(--color-accent);"></div>
+            <div style="position:absolute; left:75%; top:-4px; width:2px; height:18px; background:var(--color-text);"></div>
+          </div>
+        </div>
+      </div>
+
+      <div tabindex="0" data-focus style="border-top:2px solid var(--color-text); padding-top:clamp(10px,1.4vw,16px); min-width:0; display:grid; grid-row:span 3; grid-template-rows:subgrid;">
+        <p style="margin:0; font-weight:800; font-size:clamp(.92rem,1.25vw,1.05rem);">목표와 진행 현황판으로 팀 내 싱크</p>
+        <ul style="margin:9px 0 0; padding:0; list-style:none; font-size:clamp(.78rem,1vw,.88rem); line-height:1.5; color:var(--color-neutral-800);">
+          <li style="border-top:1px solid var(--color-divider); padding:6px 0;">목표 아키텍처로 현재와 앞으로의 그림을 이해할 수 있게</li>
+          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:6px 0;">타임라인으로 진척률·담당자·의존 작업을 공유해 항상 싱크를 맞추게</li>
+        </ul>
+        <a href="assets/goal.png" target="_blank" rel="noopener" class="grayscale" style="display:block; margin-top:10px; border:1px solid var(--color-neutral-300); line-height:0;"><img src="assets/goal.png" alt="검색플랫폼 목표 아키텍처" style="width:100%; height:min(10vh,86px); object-fit:cover; object-position:left top; display:block;"></a>
+      </div>
+
     </div>
   </div>
 
   <div style="display:flex; justify-content:space-between; border-top:2px solid var(--color-text); padding-top:8px; font:600 11px/1 'Archivo',sans-serif; letter-spacing:.1em; color:var(--color-neutral-600);">
-    <span>STRENGTH</span><span>06 / 09</span>
+    <span>LEADERSHIP</span><span>06 / 08</span>
   </div>
 </section>
 
-<section data-slide data-screen-label="07 Weakness" style="scroll-snap-align:start; min-height:100dvh; display:flex; flex-direction:column; padding:clamp(20px,2.6vw,44px) clamp(24px,3.4vw,64px) clamp(14px,1.6vw,24px);">
+<section data-slide data-screen-label="07 Learning" style="scroll-snap-align:start; min-height:100dvh; display:flex; flex-direction:column; padding:clamp(20px,2.6vw,44px) clamp(24px,3.4vw,64px) clamp(14px,1.6vw,24px);">
   <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:flex; align-items:flex-end; gap:clamp(12px,2vw,24px); border-bottom:2px solid var(--color-text); padding-bottom:8px;">
-    <span style="font:700 clamp(11px,1vw,13px)/1 'Archivo',sans-serif; letter-spacing:.16em; text-transform:uppercase; color:var(--color-accent);">Weakness</span>
+    <span style="font:700 clamp(11px,1vw,13px)/1 'Archivo',sans-serif; letter-spacing:.16em; text-transform:uppercase; color:var(--color-accent);">Learning</span>
     <span style="flex:1;"></span>
     <span style="font:800 clamp(22px,2.8vw,40px)/.85 'Archivo',sans-serif; color:var(--color-text);">07</span>
   </div>
 
-  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:clamp(18px,2.4vw,32px); padding:clamp(10px,1.4vw,20px) 0; min-height:0;">
-    <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(16px,2.4vw,40px); align-items:end;">
-      <h2 style="margin:0; font:900 clamp(1.35rem,2.6vw,2.1rem)/1.25 'Archivo','Noto Sans KR',sans-serif; letter-spacing:-.02em; text-wrap:pretty;">의견이 부딪힐 때 강하게<br>밀어붙이는 타입은 아닙니다.</h2>
-      <p style="margin:0; font-size:clamp(.9rem,1.2vw,1.05rem); line-height:1.6; color:var(--color-neutral-800); border-left:2px solid var(--color-accent); padding-left:clamp(14px,1.8vw,24px);">그래서 말로 설득하기보다 수치와 시각 자료로 근거를 갖춰 설득합니다.</p>
-    </div>
-
-    <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); grid-template-rows:auto auto auto 1fr; gap:clamp(14px,1.8vw,28px); min-height:0;">
-      <div style="border-top:2px solid var(--color-text); padding-top:clamp(12px,1.6vw,20px); min-width:0; display:grid; grid-row:span 4; grid-template-rows:subgrid;">
-        <p style="margin:0; font-weight:800; font-size:clamp(.95rem,1.3vw,1.1rem);">수치와 시각화로 설득</p>
-        <ul style="margin:12px 0 0; padding:0; list-style:none; font-size:clamp(.82rem,1.05vw,.92rem); line-height:1.5; color:var(--color-neutral-800);">
-          <li style="border-top:1px solid var(--color-divider); padding:8px 0;">6개월 데이터 증가량으로 1년 후 latency 예측</li>
-          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:8px 0;">Dependency matrix로 복잡도 시각화</li>
-        </ul>
-        <a href="assets/matrix.png" target="_blank" rel="noopener" class="grayscale" style="display:block; margin-top:12px; border:1px solid var(--color-neutral-300); line-height:0;"><img src="assets/matrix.png" alt="dependency matrix 복잡도 비교" style="width:100%; max-height:min(18vh,160px); object-fit:cover; object-position:left top; display:block;"></a>
-      </div>
-      <div style="border-top:2px solid var(--color-text); padding-top:clamp(12px,1.6vw,20px); min-width:0; display:grid; grid-row:span 4; grid-template-rows:subgrid;">
-        <p style="margin:0; font-weight:800; font-size:clamp(.95rem,1.3vw,1.1rem);">일정 협의도 수치화하여 협의</p>
-        <ul style="margin:12px 0 0; padding:0; list-style:none; font-size:clamp(.82rem,1.05vw,.92rem); line-height:1.5; color:var(--color-neutral-800);">
-          <li style="border-top:1px solid var(--color-divider); padding:8px 0;">업무를 쪼개 우선순위대로 나열</li>
-          <li style="border-top:1px solid var(--color-divider); padding:8px 0;">진행도·남은 기간을 항상 시각화</li>
-          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:8px 0;">우선순위 낮은 항목 제거해 성공적으로 배포</li>
-        </ul>
-        <div style="margin-top:12px; border:1px solid var(--color-neutral-300); padding:14px 16px;">
-          <div style="display:flex; justify-content:space-between; font:600 .68rem/1 'Archivo','Noto Sans KR',sans-serif; letter-spacing:.06em; color:var(--color-neutral-600); margin-bottom:10px;">
-            <span>현재 진행 55%</span><span>목표 기준 75%</span>
-          </div>
-          <div style="position:relative; height:12px; background:var(--color-neutral-300);">
-            <div style="position:absolute; left:0; top:0; width:55%; height:100%; background:var(--color-accent);"></div>
-            <div style="position:absolute; left:75%; top:-5px; width:2px; height:22px; background:var(--color-text);"></div>
-          </div>
-        </div>
-      </div>
-      <div style="border-top:2px solid var(--color-text); padding-top:clamp(12px,1.6vw,20px); min-width:0; display:grid; grid-row:span 4; grid-template-rows:subgrid;">
-        <p style="margin:0; font-weight:800; font-size:clamp(.95rem,1.3vw,1.1rem);">수치화할 수 없는 경우 - 나만의 기준</p>
-        <ul style="margin:12px 0 0; padding:0; list-style:none; font-size:clamp(.85rem,1.1vw,.98rem); line-height:1.5; color:var(--color-neutral-600);">
-          <li style="border-top:1px solid var(--color-divider); padding:11px 0;">속도 vs <b style="color:var(--color-accent-700);">가시성</b></li>
-          <li style="border-top:1px solid var(--color-divider); padding:11px 0;">정확도 vs <b style="color:var(--color-accent-700);">심플함</b></li>
-          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:11px 0;">처리량 vs <b style="color:var(--color-accent-700);">확장성</b></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div style="display:flex; justify-content:space-between; border-top:2px solid var(--color-text); padding-top:8px; font:600 11px/1 'Archivo',sans-serif; letter-spacing:.1em; color:var(--color-neutral-600);">
-    <span>WEAKNESS</span><span>07 / 09</span>
-  </div>
-</section>
-
-<section data-slide data-screen-label="08 Learning" style="scroll-snap-align:start; min-height:100dvh; display:flex; flex-direction:column; padding:clamp(20px,2.6vw,44px) clamp(24px,3.4vw,64px) clamp(14px,1.6vw,24px);">
-  <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:flex; align-items:flex-end; gap:clamp(12px,2vw,24px); border-bottom:2px solid var(--color-text); padding-bottom:8px;">
-    <span style="font:700 clamp(11px,1vw,13px)/1 'Archivo',sans-serif; letter-spacing:.16em; text-transform:uppercase; color:var(--color-accent);">Learning</span>
-    <span style="flex:1;"></span>
-    <span style="font:800 clamp(22px,2.8vw,40px)/.85 'Archivo',sans-serif; color:var(--color-text);">08</span>
-  </div>
-
   <div style="flex:1; display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:clamp(20px,3vw,48px); align-content:center; padding:clamp(10px,1.4vw,20px) 0; min-height:0;">
-    <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; min-width:0;">
+    <div data-reveal tabindex="0" data-focus style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; min-width:0;">
       <h2 style="margin:0; font:900 clamp(1.2rem,2.2vw,1.8rem)/1.25 'Archivo','Noto Sans KR',sans-serif; letter-spacing:-.02em;">기술 트렌드 따라잡기</h2>
       <p style="margin:14px 0 0; font-size:clamp(.88rem,1.15vw,1rem); line-height:1.65; color:var(--color-neutral-800); text-wrap:pretty;">매일 논문·빅테크 테크 블로그·주요 개발자 블로그/SNS를 크롤링해 요약하고, NotebookLM으로 오디오를 자동으로 생성하여 들어요.</p>
       <p style="margin:10px 0 0; font-size:.88rem;"><a href="https://karellen-kim.github.io/trending-tech/" target="_blank" rel="noopener">karellen-kim.github.io/trending-tech</a></p>
       <a href="assets/trending-tech.png" target="_blank" rel="noopener" class="grayscale" style="display:block; margin-top:14px; border:1px solid var(--color-neutral-300); line-height:0;"><img src="assets/trending-tech.png" alt="트렌딩 테크 페이지 캡처" style="width:100%; max-height:min(34vh,340px); object-fit:cover; object-position:left top; display:block;"></a>
     </div>
     <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; min-width:0; border-left:2px solid var(--color-divider); padding-left:clamp(18px,2.4vw,40px);">
-      <p style="margin:0; font-weight:800; font-size:clamp(1rem,1.4vw,1.2rem);">얻은 지식은 업무에 반영하고자 노력한다.</p>
+      <p style="margin:0; font-weight:800; font-size:clamp(1rem,1.4vw,1.2rem);">얻은 지식은 업무에 반영하고자 노력합니다</p>
       <div style="margin-top:16px; display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:0 clamp(18px,2.4vw,36px);">
-        <div style="border-top:2px solid var(--color-text); padding:12px 0;">
+        <div tabindex="0" data-focus style="border-top:2px solid var(--color-text); padding:12px 0;">
           <p style="margin:0; font:700 .72rem/1 'Archivo',sans-serif; letter-spacing:.1em; text-transform:uppercase; color:var(--color-accent);">AI 코드 검증</p>
-          <p style="margin:8px 0 0; font-size:clamp(.82rem,1.05vw,.92rem); line-height:1.5; color:var(--color-neutral-800);">pitest·flaky·메타모핑 테스트로 관심을 갖게 됨</p>
+          <p style="margin:8px 0 0; font-size:clamp(.82rem,1.05vw,.92rem); line-height:1.5; color:var(--color-neutral-800);">pitest·flaky·메타모픽 테스트로 관심을 갖게 됨</p>
         </div>
-        <div style="border-top:2px solid var(--color-text); padding:12px 0;">
+        <div tabindex="0" data-focus style="border-top:2px solid var(--color-text); padding:12px 0;">
           <p style="margin:0; font:700 .72rem/1 'Archivo',sans-serif; letter-spacing:.1em; text-transform:uppercase; color:var(--color-accent);">AI 에이전트</p>
           <p style="margin:8px 0 0; font-size:clamp(.82rem,1.05vw,.92rem); line-height:1.5; color:var(--color-neutral-800);">피드백 루프 구축, 검색 연동 스킬 제공</p>
         </div>
-        <div style="border-top:1px solid var(--color-divider); padding:12px 0;">
-          <p style="margin:0; font:700 .72rem/1 'Archivo',sans-serif; letter-spacing:.1em; text-transform:uppercase; color:var(--color-accent);">Akka Streams</p>
-          <p style="margin:8px 0 0; font-size:clamp(.82rem,1.05vw,.92rem); line-height:1.5; color:var(--color-neutral-800);">네이버에서 내부 큐에 적용</p>
+        <div tabindex="0" data-focus style="border-top:1px solid var(--color-divider); padding:12px 0;">
+          <p style="margin:0; font:700 .72rem/1 'Archivo',sans-serif; letter-spacing:.1em; text-transform:uppercase; color:var(--color-accent);">Microservices</p>
+          <p style="margin:8px 0 0; font-size:clamp(.82rem,1.05vw,.92rem); line-height:1.5; color:var(--color-neutral-800);">Microservice 공부하고 적용</p>
         </div>
-        <div style="border-top:1px solid var(--color-divider); padding:12px 0;">
+        <div tabindex="0" data-focus style="border-top:1px solid var(--color-divider); padding:12px 0;">
           <p style="margin:0; font:700 .72rem/1 'Archivo',sans-serif; letter-spacing:.1em; text-transform:uppercase; color:var(--color-accent);">GraphQL</p>
           <p style="margin:8px 0 0; font-size:clamp(.82rem,1.05vw,.92rem); line-height:1.5; color:var(--color-neutral-800);">MSA 네트워크 비용 절감에 적용</p>
         </div>
@@ -403,71 +425,155 @@
   </div>
 
   <div style="display:flex; justify-content:space-between; border-top:2px solid var(--color-text); padding-top:8px; font:600 11px/1 'Archivo',sans-serif; letter-spacing:.1em; color:var(--color-neutral-600);">
-    <span>LEARNING</span><span>08 / 09</span>
+    <span>LEARNING</span><span>07 / 08</span>
   </div>
 </section>
 
-<section data-slide data-screen-label="09 AI Timeline" style="scroll-snap-align:start; min-height:100dvh; display:flex; flex-direction:column; padding:clamp(20px,2.6vw,44px) clamp(24px,3.4vw,64px) clamp(14px,1.6vw,24px);">
+<section data-slide data-screen-label="08 AI Workflow" style="scroll-snap-align:start; min-height:100dvh; display:flex; flex-direction:column; padding:clamp(20px,2.6vw,44px) clamp(24px,3.4vw,64px) clamp(14px,1.6vw,24px);">
   <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:flex; align-items:flex-end; gap:clamp(12px,2vw,24px); border-bottom:2px solid var(--color-text); padding-bottom:8px;">
-    <span style="font:700 clamp(11px,1vw,13px)/1 'Archivo',sans-serif; letter-spacing:.16em; text-transform:uppercase; color:var(--color-accent);">AI Timeline</span>
+    <span style="font:700 clamp(11px,1vw,13px)/1 'Archivo',sans-serif; letter-spacing:.16em; text-transform:uppercase; color:var(--color-accent);">AI Workflow</span>
     <span style="flex:1;"></span>
-    <span style="font:800 clamp(22px,2.8vw,40px)/.85 'Archivo',sans-serif; color:var(--color-text);">09</span>
+    <span style="font:800 clamp(22px,2.8vw,40px)/.85 'Archivo',sans-serif; color:var(--color-text);">08</span>
   </div>
 
-  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:clamp(16px,2.2vw,32px) 0; min-height:0;">
-    <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:grid; gap:0;">
-      <div style="display:grid; grid-template-columns:minmax(88px,110px) 1fr; gap:clamp(16px,2.2vw,32px); align-items:baseline; border-top:2px solid var(--color-text); padding:clamp(7px,1vw,12px) 0;">
-        <span style="font:800 .82rem/1 'Archivo',sans-serif; letter-spacing:.04em; color:var(--color-accent);">2025.08</span>
-        <div>
-          <p style="margin:0; font-weight:800; font-size:clamp(.9rem,1.15vw,1.02rem);">프로젝트에 서브 에이전트 도입</p>
-        </div>
-      </div>
-      <div style="display:grid; grid-template-columns:minmax(88px,110px) 1fr; gap:clamp(16px,2.2vw,32px); align-items:baseline; border-top:1px solid var(--color-divider); padding:clamp(7px,1vw,12px) 0;">
-        <span style="font:800 .82rem/1 'Archivo',sans-serif; letter-spacing:.04em; color:var(--color-accent);">2025.10</span>
-        <div>
-          <p style="margin:0; font-weight:800; font-size:clamp(.9rem,1.15vw,1.02rem);">팀 Claude 사용 표준화</p>
-          <p style="margin:4px 0 0; font-size:clamp(.8rem,1.02vw,.9rem); line-height:1.5; color:var(--color-neutral-800);">PR 리뷰를 코드 없이 Claude plan만으로 진행</p>
-        </div>
-      </div>
-      <div style="display:grid; grid-template-columns:minmax(88px,110px) 1fr; gap:clamp(16px,2.2vw,32px); align-items:baseline; border-top:1px solid var(--color-divider); padding:clamp(7px,1vw,12px) 0;">
-        <span style="font:800 .82rem/1 'Archivo',sans-serif; letter-spacing:.04em; color:var(--color-accent);">2026.02</span>
-        <div>
-          <p style="margin:0; font-weight:800; font-size:clamp(.9rem,1.15vw,1.02rem);">LLM으로 데이터 분석 업무 확장</p>
-          <p style="margin:4px 0 0; font-size:clamp(.8rem,1.02vw,.9rem); line-height:1.5; color:var(--color-neutral-800);">검색 통계 분석 등에 활용</p>
-        </div>
-      </div>
-      <div style="display:grid; grid-template-columns:minmax(88px,110px) 1fr; gap:clamp(16px,2.2vw,32px); align-items:baseline; border-top:1px solid var(--color-divider); padding:clamp(7px,1vw,12px) 0;">
-        <span style="font:800 .82rem/1 'Archivo',sans-serif; letter-spacing:.04em; color:var(--color-accent);">2026.04</span>
-        <div>
-          <p style="margin:0; font-weight:800; font-size:clamp(.9rem,1.15vw,1.02rem);">코드베이스를 에이전트 친화적으로 전체 리팩토링</p>
-        </div>
-      </div>
-      <div style="display:grid; grid-template-columns:minmax(88px,110px) 1fr; gap:clamp(16px,2.2vw,32px); align-items:baseline; border-top:1px solid var(--color-divider); padding:clamp(7px,1vw,12px) 0;">
-        <span style="font:800 .82rem/1 'Archivo',sans-serif; letter-spacing:.04em; color:var(--color-accent);">2026.04</span>
-        <div>
-          <p style="margin:0; font-weight:800; font-size:clamp(.9rem,1.15vw,1.02rem);">Codex·Claude 교차 검증 체계 구축</p>
-          <p style="margin:4px 0 0; font-size:clamp(.8rem,1.02vw,.9rem); line-height:1.5; color:var(--color-neutral-800);">context7·LSP·cx 등으로 에이전트 검색 커버리지와 정확도 향상</p>
-        </div>
-      </div>
-      <div style="display:grid; grid-template-columns:minmax(88px,110px) 1fr; gap:clamp(16px,2.2vw,32px); align-items:baseline; border-top:1px solid var(--color-divider); padding:clamp(7px,1vw,12px) 0;">
-        <span style="font:800 .82rem/1 'Archivo',sans-serif; letter-spacing:.04em; color:var(--color-accent);">2026.05</span>
-        <div>
-          <p style="margin:0; font-weight:800; font-size:clamp(.9rem,1.15vw,1.02rem);">개발 환경에 피드백 루프 적용</p>
-          <p style="margin:4px 0 0; font-size:clamp(.8rem,1.02vw,.9rem); line-height:1.5; color:var(--color-neutral-800);">AI로 개발하며 얻은 내용을 learn·가드레일·코드리뷰에 반영해 같은 실수가 반복되지 않도록 함</p>
-        </div>
-      </div>
-      <div style="display:grid; grid-template-columns:minmax(88px,110px) 1fr; gap:clamp(16px,2.2vw,32px); align-items:baseline; border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:clamp(7px,1vw,12px) 0;">
-        <span style="font:800 .82rem/1 'Archivo',sans-serif; letter-spacing:.04em; color:var(--color-accent);">2026.08</span>
-        <div>
-          <p style="margin:0; font-weight:800; font-size:clamp(.9rem,1.15vw,1.02rem);">Slack·Git·Notion 업무 취합 Obsidian 위키 구축하고 봇 연동</p>
-          <p style="margin:4px 0 0; font-size:clamp(.8rem,1.02vw,.9rem); line-height:1.5; color:var(--color-neutral-800);">외부 커뮤니케이션 비용 축소</p>
-        </div>
-      </div>
+  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:clamp(12px,1.6vw,20px); padding:clamp(10px,1.4vw,18px) 0; min-height:0;">
+    <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; border-top:2px solid var(--color-text); padding-top:clamp(8px,1.2vw,14px);">
+      <p style="margin:0 0 4px; font:700 .72rem/1 'Archivo',sans-serif; letter-spacing:.1em; text-transform:uppercase; color:var(--color-accent);">팀 히스토리 — 여러 팀의 기록을 한곳으로</p>
+      <svg viewBox="0 0 1360 152" role="img" aria-labelledby="hist-title hist-desc" style="width:100%; height:auto; max-height:min(22vh,180px); display:block; font-family:'Archivo','Noto Sans KR',sans-serif;">
+        <title id="hist-title">팀 히스토리 취합 구조</title>
+        <desc id="hist-desc">우리 팀과 협업하는 여러 팀의 Slack, GitHub 기록을 각각 취합해 하나의 팀 Obsidian 위키로 모으고, 이를 근거로 우선순위를 조율하고 의사결정하는 구조.</desc>
+        <defs>
+          <marker id="h-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#7b7b7b"/>
+          </marker>
+        </defs>
+
+        <path d="M 364 26 H 432 Q 440 26 440 34 V 42 Q 440 50 448 50 H 472" stroke="#7b7b7b" stroke-width="1.2" fill="none" marker-end="url(#h-arrow)"/>
+        <path d="M 364 70 H 472" stroke="#7b7b7b" stroke-width="1.2" fill="none" marker-end="url(#h-arrow)"/>
+        <path d="M 364 114 H 432 Q 440 114 440 106 V 98 Q 440 90 448 90 H 472" stroke="#7b7b7b" stroke-width="1.2" fill="none" marker-end="url(#h-arrow)"/>
+        <path d="M 740 70 H 812" stroke="#7b7b7b" stroke-width="1.2" fill="none" marker-end="url(#h-arrow)"/>
+
+        <rect x="24" y="8" width="340" height="36" rx="4" fill="#fff" stroke="#3464e0" stroke-width="1"/>
+        <rect x="24" y="8" width="4" height="36" fill="#3464e0"/>
+        <text x="44" y="31" font-size="14" font-weight="600" fill="#222222">Slack · GitHub 취합 <tspan fill="#7b7b7b">— 우리 팀</tspan></text>
+
+        <rect x="24" y="52" width="340" height="36" rx="4" fill="#fff" stroke="#3464e0" stroke-width="1"/>
+        <rect x="24" y="52" width="4" height="36" fill="#3464e0"/>
+        <text x="44" y="75" font-size="14" font-weight="600" fill="#222222">Slack · GitHub 취합 <tspan fill="#7b7b7b">— 협업 A팀</tspan></text>
+
+        <rect x="24" y="96" width="340" height="36" rx="4" fill="#fff" stroke="#3464e0" stroke-width="1"/>
+        <rect x="24" y="96" width="4" height="36" fill="#3464e0"/>
+        <text x="44" y="119" font-size="14" font-weight="600" fill="#222222">Slack · GitHub 취합 <tspan fill="#7b7b7b">— 협업 B팀 …</tspan></text>
+
+        <rect x="480" y="34" width="260" height="72" rx="6" fill="#222222"/>
+        <text x="610" y="66" font-size="16" font-weight="800" fill="#fbfbfb" text-anchor="middle">팀 Obsidian 위키</text>
+        <text x="610" y="86" font-size="12" fill="#c4c4c4" text-anchor="middle">한 곳에 누적되는 기록</text>
+
+        <rect x="820" y="34" width="380" height="72" rx="6" fill="#fff" stroke="#c4c4c4" stroke-width="1"/>
+        <text x="1010" y="66" font-size="16" font-weight="700" fill="#222222" text-anchor="middle">우선순위 조율 · 의사결정</text>
+        <text x="1010" y="86" font-size="12" fill="#7b7b7b" text-anchor="middle">사람 판단</text>
+      
+        <rect class="nodefocus" tabindex="0" x="24" y="8" width="340" height="36" rx="6" fill="transparent" stroke="transparent" stroke-width="2.5"/>
+        <rect class="nodefocus" tabindex="0" x="24" y="52" width="340" height="36" rx="6" fill="transparent" stroke="transparent" stroke-width="2.5"/>
+        <rect class="nodefocus" tabindex="0" x="24" y="96" width="340" height="36" rx="6" fill="transparent" stroke="transparent" stroke-width="2.5"/>
+        <rect class="nodefocus" tabindex="0" x="480" y="34" width="260" height="72" rx="6" fill="transparent" stroke="transparent" stroke-width="2.5"/>
+        <rect class="nodefocus" tabindex="0" x="820" y="34" width="380" height="72" rx="6" fill="transparent" stroke="transparent" stroke-width="2.5"/>
+      </svg>
+    </div>
+
+    <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; border-top:1px solid var(--color-divider); padding-top:clamp(10px,1.4vw,16px); min-height:0;">
+      <p style="margin:0 0 6px; font:700 .72rem/1 'Archivo',sans-serif; letter-spacing:.1em; text-transform:uppercase; color:var(--color-accent);">개발 — 문서로 돌아오는 루프</p>
+      <svg viewBox="0 0 1360 300" role="img" aria-labelledby="ai-loop-title ai-loop-desc" style="width:100%; height:auto; max-height:min(44vh,370px); display:block; font-family:'Archivo','Noto Sans KR',sans-serif;">
+        <title id="ai-loop-title">AI 개발 워크플로우 피드백 루프</title>
+        <desc id="ai-loop-desc">Linear 이슈에서 시작해 기술 문서를 근거로 AI가 실행하고, 플랜과 ADR을 적대적으로 교차 검증한 뒤 코딩과 코드 리뷰를 거쳐 property 테스트와 pitest, 통합 테스트로 결과를 검증하고, 작업 완료 후 학습 내용이 다시 기술 문서로 반영되는 순환 구조.</desc>
+
+        <defs>
+          <marker id="wf-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#7b7b7b"/>
+          </marker>
+          <marker id="wf-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#3464e0"/>
+          </marker>
+        </defs>
+
+        <path d="M 232 86 L 292 86" stroke="#7b7b7b" stroke-width="1.2" fill="none" marker-end="url(#wf-arrow)"/>
+        <path d="M 508 86 L 568 86" stroke="#7b7b7b" stroke-width="1.2" fill="none" marker-end="url(#wf-arrow)"/>
+        <path d="M 784 86 L 844 86" stroke="#7b7b7b" stroke-width="1.2" fill="none" marker-end="url(#wf-arrow)"/>
+        <path d="M 1060 86 L 1120 86" stroke="#7b7b7b" stroke-width="1.2" fill="none" marker-end="url(#wf-arrow)"/>
+        <path d="M 1232 124 L 1232 192" stroke="#7b7b7b" stroke-width="1.2" fill="none" marker-end="url(#wf-arrow)"/>
+        <path d="M 1128 238 L 1068 238" stroke="#7b7b7b" stroke-width="1.2" fill="none" marker-end="url(#wf-arrow)"/>
+        <path d="M 852 238 L 792 238" stroke="#7b7b7b" stroke-width="1.2" fill="none" marker-end="url(#wf-arrow)"/>
+        <path d="M 576 238 L 516 238" stroke="#7b7b7b" stroke-width="1.2" fill="none" marker-end="url(#wf-arrow)"/>
+        <path d="M 404 200 L 404 132" stroke="#3464e0" stroke-width="1.6" stroke-dasharray="6,4" fill="none" marker-end="url(#wf-arrow-accent)"/>
+
+        <rect x="414" y="152" width="86" height="16" rx="2" fill="#fbfbfb"/>
+        <text x="418" y="164" font-size="12" font-weight="700" letter-spacing="0.04em" fill="#3464e0">문서에 반영</text>
+
+        <rect x="24" y="48" width="208" height="76" rx="6" fill="#fff" stroke="#c4c4c4" stroke-width="1"/>
+        <text x="128" y="82" font-size="14" font-weight="700" fill="#4a4a4a" text-anchor="middle">Linear 이슈 생성</text>
+        <text x="128" y="102" font-size="11" fill="#7b7b7b" text-anchor="middle">사람 판단</text>
+
+        <rect x="300" y="48" width="208" height="76" rx="6" fill="#222222"/>
+        <text x="404" y="80" font-size="14" font-weight="800" fill="#fbfbfb" text-anchor="middle">기술 문서 · 가드레일</text>
+        <text x="404" y="100" font-size="10" fill="#c4c4c4" text-anchor="middle">패키지별 역할 · learned</text>
+
+        <rect x="576" y="48" width="208" height="76" rx="6" fill="#fff" stroke="#3464e0" stroke-width="1"/>
+        <rect x="576" y="48" width="4" height="76" fill="#3464e0"/>
+        <text x="680" y="76" font-size="14" font-weight="700" fill="#222222" text-anchor="middle">Claude · Codex 실행</text>
+        <text x="680" y="94" font-size="10" fill="#7b7b7b" text-anchor="middle">벡터검색 커버리지</text>
+        <text x="680" y="110" font-size="10" fill="#7b7b7b" text-anchor="middle">context7 · LSP · dep graph</text>
+
+        <rect x="852" y="48" width="208" height="76" rx="6" fill="#222222"/>
+        <text x="956" y="82" font-size="14" font-weight="800" fill="#fbfbfb" text-anchor="middle">플랜 · ADR</text>
+        <text x="956" y="102" font-size="11" fill="#c4c4c4" text-anchor="middle">결정 기록</text>
+
+        <rect x="1128" y="48" width="208" height="76" rx="6" fill="#fff" stroke="#3464e0" stroke-width="1"/>
+        <rect x="1128" y="48" width="4" height="76" fill="#3464e0"/>
+        <text x="1232" y="82" font-size="14" font-weight="700" fill="#222222" text-anchor="middle">적대적 교차 검증</text>
+        <text x="1232" y="102" font-size="10" fill="#7b7b7b" text-anchor="middle">Codex로 플랜 반증</text>
+
+        <rect x="1128" y="200" width="208" height="76" rx="6" fill="#fff" stroke="#3464e0" stroke-width="1"/>
+        <rect x="1128" y="200" width="4" height="76" fill="#3464e0"/>
+        <text x="1232" y="234" font-size="14" font-weight="700" fill="#222222" text-anchor="middle">코딩 · 코드 리뷰</text>
+        <text x="1232" y="254" font-size="11" fill="#7b7b7b" text-anchor="middle">AI 실행</text>
+
+        <rect x="852" y="200" width="208" height="76" rx="6" fill="#fff" stroke="#3464e0" stroke-width="1"/>
+        <rect x="852" y="200" width="4" height="76" fill="#3464e0"/>
+        <text x="956" y="228" font-size="14" font-weight="700" fill="#222222" text-anchor="middle">코드 검증</text>
+        <text x="956" y="246" font-size="10" fill="#7b7b7b" text-anchor="middle">property · pitest</text>
+        <text x="956" y="262" font-size="10" fill="#7b7b7b" text-anchor="middle">통합 테스트</text>
+
+        <rect x="576" y="200" width="208" height="76" rx="6" fill="#222222"/>
+        <text x="680" y="244" font-size="14" font-weight="800" fill="#fbfbfb" text-anchor="middle">작업 완료</text>
+
+        <rect x="300" y="200" width="208" height="76" rx="6" fill="#fff" stroke="#3464e0" stroke-width="1"/>
+        <rect x="300" y="200" width="4" height="76" fill="#3464e0"/>
+        <text x="404" y="228" font-size="13" font-weight="700" fill="#222222" text-anchor="middle">learned · 체크리스트</text>
+        <text x="404" y="246" font-size="13" font-weight="700" fill="#222222" text-anchor="middle">문서 최신화 에이전트</text>
+        <text x="404" y="264" font-size="10" fill="#7b7b7b" text-anchor="middle">같은 실수 반복 차단</text>
+
+        <rect x="24" y="204" width="12" height="12" fill="#fff" stroke="#3464e0"/>
+        <rect x="24" y="204" width="4" height="12" fill="#3464e0"/>
+        <text x="44" y="214" font-size="12" fill="#7b7b7b">AI 실행</text>
+        <rect x="24" y="232" width="12" height="12" fill="#fff" stroke="#c4c4c4"/>
+        <text x="44" y="242" font-size="12" fill="#7b7b7b">사람 판단</text>
+        <rect x="24" y="260" width="12" height="12" fill="#222222"/>
+        <text x="44" y="270" font-size="12" fill="#7b7b7b">산출물 · 문서</text>
+
+        <rect class="nodefocus" tabindex="0" x="24" y="48" width="208" height="76" rx="6" fill="transparent" stroke="transparent" stroke-width="2.5"/>
+        <rect class="nodefocus" tabindex="0" x="300" y="48" width="208" height="76" rx="6" fill="transparent" stroke="transparent" stroke-width="2.5"/>
+        <rect class="nodefocus" tabindex="0" x="576" y="48" width="208" height="76" rx="6" fill="transparent" stroke="transparent" stroke-width="2.5"/>
+        <rect class="nodefocus" tabindex="0" x="852" y="48" width="208" height="76" rx="6" fill="transparent" stroke="transparent" stroke-width="2.5"/>
+        <rect class="nodefocus" tabindex="0" x="1128" y="48" width="208" height="76" rx="6" fill="transparent" stroke="transparent" stroke-width="2.5"/>
+        <rect class="nodefocus" tabindex="0" x="1128" y="200" width="208" height="76" rx="6" fill="transparent" stroke="transparent" stroke-width="2.5"/>
+        <rect class="nodefocus" tabindex="0" x="852" y="200" width="208" height="76" rx="6" fill="transparent" stroke="transparent" stroke-width="2.5"/>
+        <rect class="nodefocus" tabindex="0" x="576" y="200" width="208" height="76" rx="6" fill="transparent" stroke="transparent" stroke-width="2.5"/>
+        <rect class="nodefocus" tabindex="0" x="300" y="200" width="208" height="76" rx="6" fill="transparent" stroke="transparent" stroke-width="2.5"/>
+      </svg>
     </div>
   </div>
-
   <div style="display:flex; justify-content:space-between; border-top:2px solid var(--color-text); padding-top:8px; font:600 11px/1 'Archivo',sans-serif; letter-spacing:.1em; color:var(--color-neutral-600);">
-    <span>AI TIMELINE</span><span>09 / 09</span>
+    <span>AI WORKFLOW</span><span>08 / 08</span>
   </div>
 </section>
 
@@ -575,6 +681,39 @@ class Component extends DCLogic {
     if (this.onKey) document.removeEventListener('keydown', this.onKey);
   }
 }
+</script>
+<script>
+(function () {
+  var TINT = 'rgba(52,100,224,0.08)';
+  function off(el) {
+    el.classList.remove('is-on');
+    if (el.classList.contains('nodefocus')) {
+      el.setAttribute('stroke', 'transparent');
+      el.setAttribute('fill', 'transparent');
+    } else {
+      el.style.background = '';
+      el.style.boxShadow = '';
+      el.style.borderTopColor = '';
+    }
+  }
+  function on(el) {
+    el.classList.add('is-on');
+    if (el.classList.contains('nodefocus')) {
+      el.setAttribute('stroke', '#3464e0');
+      el.setAttribute('fill', 'rgba(52,100,224,0.14)');
+    } else {
+      el.style.background = TINT;
+      el.style.boxShadow = '0 0 0 10px ' + TINT;
+      el.style.borderTopColor = '#3464e0';
+    }
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target && e.target.closest ? e.target.closest('.nodefocus, [data-focus]') : null;
+    var already = t && t.classList.contains('is-on');
+    document.querySelectorAll('.is-on').forEach(off);
+    if (t && !already) on(t);
+  });
+})();
 </script>
 </body>
 </html>
