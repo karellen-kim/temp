@@ -182,7 +182,7 @@
         <ul style="margin:10px 0 0; padding:0; list-style:none; font-size:clamp(.8rem,1.02vw,.9rem); line-height:1.5; color:var(--color-neutral-800);">
           <li style="border-top:1px solid var(--color-divider); padding:7px 0;">팀 Claude 사용 표준화</li>
           <li style="border-top:1px solid var(--color-divider); padding:7px 0;">검색 커버리지·정확도 보강으로 더 정확한 AI</li>
-          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:7px 0;">작업할수록 문서와 기준이 쌓이는 구조</li>
+          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:7px 0;">스킬·봇 연동으로 업무 생산성 향상</li>
         </ul>
       </div>
     </div>
@@ -238,20 +238,20 @@
       <div tabindex="0" data-focus style="border-top:2px solid var(--color-text); padding-top:clamp(10px,1.4vw,16px); min-width:0; display:grid; grid-row:span 2; grid-template-rows:subgrid;">
         <p style="margin:0; font-weight:800; font-size:clamp(.92rem,1.25vw,1.05rem);">할 수 있는 것과 없는 것을 쪼개서 해결</p>
         <ul style="margin:9px 0 0; padding:0; list-style:none; font-size:clamp(.76rem,.98vw,.86rem); line-height:1.5; color:var(--color-neutral-800);">
-          <li style="border-top:1px solid var(--color-divider); padding:6px 0;">ES 매핑 — 테이블·Kafka로 추론, 나머지는 확인받아 시간 단축</li>
-          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:6px 0;">검색 설정 export/import로 연동</li>
+          <li style="border-top:1px solid var(--color-divider); padding:6px 0;">전부 수동으로 하는 대신 자동 추론 가능한 것은 추론하고 나머지만 사람이 확인 — ES 매핑</li>
+          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:6px 0;">망분리처럼 제어할 수 없는 환경도 가능한 데까지 자동화해 사람 손을 최소화 — 검색 설정 export/import</li>
         </ul>
       </div>
       <div tabindex="0" data-focus style="border-top:2px solid var(--color-text); padding-top:clamp(10px,1.4vw,16px); min-width:0; display:grid; grid-row:span 2; grid-template-rows:subgrid;">
         <p style="margin:0; font-weight:800; font-size:clamp(.92rem,1.25vw,1.05rem);">컨벤션과 가이드로 해결</p>
         <ul style="margin:9px 0 0; padding:0; list-style:none; font-size:clamp(.76rem,.98vw,.86rem); line-height:1.5; color:var(--color-neutral-800);">
-          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:6px 0;">Mustache에서 age=0이 스킵되는 문제 — 존재 판별용 예약어(has_xx)를 백엔드가 자동 생성</li>
+          <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:6px 0;">로직으로 막기 어려운 문제는 가이드와 예약어를 만들어 해결</li>
         </ul>
       </div>
       <div tabindex="0" data-focus style="border-top:2px solid var(--color-text); padding-top:clamp(10px,1.4vw,16px); min-width:0; display:grid; grid-row:span 2; grid-template-rows:subgrid;">
         <p style="margin:0; font-weight:800; font-size:clamp(.92rem,1.25vw,1.05rem);">되돌릴 수 있는 설계</p>
         <ul style="margin:9px 0 0; padding:0; list-style:none; font-size:clamp(.76rem,.98vw,.86rem); line-height:1.5; color:var(--color-neutral-800);">
-          <li style="border-top:1px solid var(--color-divider); padding:6px 0;">추상화 덕분에 ClickHouse → StarRocks를 3개월 뒤 쉽게 이전</li>
+          <li style="border-top:1px solid var(--color-divider); padding:6px 0;">storage를 추상화해 3개월 뒤 엔진을 쉽게 이전</li>
           <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:6px 0;">리스크를 줄이는 쪽을 먼저 고름</li>
         </ul>
       </div>
@@ -290,8 +290,8 @@
       <div tabindex="0" data-focus style="border-top:2px solid var(--color-text); padding-top:clamp(10px,1.4vw,16px); min-width:0; display:grid; grid-row:span 3; grid-template-rows:subgrid;">
         <p style="margin:0; font-weight:800; font-size:clamp(.92rem,1.25vw,1.05rem);">의사결정</p>
         <ul style="margin:9px 0 0; padding:0; list-style:none; font-size:clamp(.78rem,1vw,.88rem); line-height:1.5; color:var(--color-neutral-800);">
-          <li style="border-top:1px solid var(--color-divider); padding:6px 0;">6개월 데이터 증가량으로 1년 후 latency 예측</li>
-          <li style="border-top:1px solid var(--color-divider); padding:6px 0;">Dependency matrix로 복잡도 시각화</li>
+          <li style="border-top:1px solid var(--color-divider); padding:6px 0;">데이터 증가량으로 1년 후 latency 예측하여 brute force 로직 제거</li>
+          <li style="border-top:1px solid var(--color-divider); padding:6px 0;">Dependency matrix로 복잡도 시각화하여 레거시 리팩토링 리소스 확보</li>
           <li style="border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); padding:6px 0;">진행도·남은 기간을 시각화해 진척률이 낮으면 우선순위 낮은 항목부터 제거</li>
         </ul>
         <div style="margin-top:10px; display:grid; grid-template-columns:1fr auto 1fr; gap:6px; align-items:center;">
@@ -302,7 +302,7 @@
       </div>
 
       <div tabindex="0" data-focus style="border-top:2px solid var(--color-text); padding-top:clamp(10px,1.4vw,16px); min-width:0; display:grid; grid-row:span 3; grid-template-rows:subgrid;">
-        <p style="margin:0; font-weight:800; font-size:clamp(.92rem,1.25vw,1.05rem);">커뮤니케이션</p>
+        <p style="margin:0; font-weight:800; font-size:clamp(.92rem,1.25vw,1.05rem);">팀 내 싱크</p>
         <ul style="margin:9px 0 0; padding:0; list-style:none; font-size:clamp(.78rem,1vw,.88rem); line-height:1.5; color:var(--color-neutral-800);">
           <li style="border-top:1px solid var(--color-divider); padding:6px 0;">목표 아키텍처와 타임라인으로 앞으로의 그림·진척률·담당자·의존 작업을 공유</li>
           <li style="border-top:1px solid var(--color-divider); padding:6px 0;">AI 사용을 표준화해 팀원 간 결과물 편차를 줄이게</li>
