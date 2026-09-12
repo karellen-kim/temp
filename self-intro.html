@@ -21,15 +21,13 @@
   ::selection { background: var(--color-accent); color: #fff; }
   :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
   [data-focus] { cursor: pointer; transition: background .18s ease, box-shadow .18s ease, border-color .18s ease; }
-  [data-focus]:focus, [data-focus].is-on { outline: none; background: rgba(52,100,224,.07); box-shadow: 0 0 0 10px rgba(52,100,224,.07); border-top-color: var(--color-accent) !important; }
+  [data-focus]:focus, [data-focus].is-on { outline: none; background: rgba(52,100,224,.07); box-shadow: 0 0 0 10px rgba(52,100,224,.07); }
   .nodefocus { cursor: pointer; transition: stroke .18s ease, fill .18s ease; }
-  .nodefocus:focus, .nodefocus.is-on { outline: none; stroke: var(--color-accent); fill: rgba(52,100,224,.14); }
+  .nodefocus:focus, .nodefocus.is-on { outline: none; fill: rgba(52,100,224,.14); }
 </style>
 </helmet>
 
 <div ref="{{ rootRef }}" style="position:relative; --color-bg:#fbfbfb; --color-text:#222222; --color-accent:#3464e0; --color-accent-700:#2a4cad; --color-divider:#dcdcdc; --color-neutral-200:#f1f1f1; --color-neutral-300:#e1e1e1; --color-neutral-400:#c4c4c4; --color-neutral-600:#7b7b7b; --color-neutral-800:#4a4a4a; background:#fbfbfb; color:#222222;">
-
-<div data-bar style="position:fixed; top:0; left:0; height:4px; width:0%; background:var(--color-accent); z-index:120;"></div>
 
 <nav data-nav aria-label="Slide navigation" style="position:fixed; right:clamp(10px,1.4vw,22px); top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:9px; z-index:120;">
   <button data-dot="0" aria-label="1" style="width:20px; height:2px; border:0; padding:0; cursor:pointer; background:var(--color-neutral-400);"></button>
@@ -273,7 +271,7 @@
   <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:clamp(12px,1.8vw,22px); padding:clamp(10px,1.4vw,18px) 0; min-height:0;">
     <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:grid; grid-template-columns:minmax(0,0.7fr) minmax(0,2.3fr); gap:clamp(16px,2.4vw,40px); align-items:end;">
       <h2 style="margin:0; font:900 clamp(1.15rem,2.1vw,1.65rem)/1.25 'Archivo','Noto Sans KR',sans-serif; letter-spacing:-.02em; text-wrap:pretty;">팀 리딩 · 커뮤니케이션</h2>
-      <p style="margin:0; font-size:clamp(.86rem,1.1vw,.98rem); line-height:1.6; color:var(--color-neutral-800); border-left:2px solid var(--color-accent); padding-left:clamp(14px,1.8vw,24px);">수치와 시각 자료로 근거를 만들어 설득하고, 개인의 노력에 기대는 대신 시스템으로 남기고 있어요</p>
+      <p style="margin:0; font-size:clamp(.86rem,1.1vw,.98rem); line-height:1.6; color:var(--color-neutral-800); border-left:2px solid var(--color-accent); padding-left:clamp(14px,1.8vw,24px);">현재 4명인 팀을 운영하고 있고 최대 7명까지 운영해보았어요. 인프라·데이터엔지니어링·서버개발·프론트를 아우르는 팀을 리딩하면서 개발하고 있어요.</p>
     </div>
 
     <div data-reveal style="opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); grid-template-rows:auto auto 1fr; gap:clamp(14px,2vw,32px); min-height:0;">
@@ -588,18 +586,16 @@ class Component extends DCLogic {
     } else {
       el.style.background = '';
       el.style.boxShadow = '';
-      el.style.borderTopColor = '';
     }
   }
   function on(el) {
     el.classList.add('is-on');
     if (el.classList.contains('nodefocus')) {
-      el.setAttribute('stroke', '#3464e0');
+      el.setAttribute('stroke', 'transparent');
       el.setAttribute('fill', 'rgba(52,100,224,0.14)');
     } else {
       el.style.background = TINT;
       el.style.boxShadow = '0 0 0 10px ' + TINT;
-      el.style.borderTopColor = '#3464e0';
     }
   }
   document.addEventListener('click', function (e) {
